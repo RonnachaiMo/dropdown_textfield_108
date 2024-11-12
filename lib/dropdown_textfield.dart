@@ -348,7 +348,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
         _cnt.text = (count == 0
             ? ""
             : widget.displayCompleteItem
-                ? widget.initialValue.join(",")
+                ? (widget.initialValue ?? []).join(",")
                 : "$count item selected");
       } else {
         var index = _dropDownList.indexWhere(
@@ -429,7 +429,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
             _cnt.text = (count == 0
                 ? ""
                 : widget.displayCompleteItem
-                    ? widget.initialValue.join(",")
+                    ? (widget.initialValue ?? []).join(",")
                     : "$count item selected");
           } else {
             _multiSelectionValue = [];
