@@ -422,6 +422,12 @@ class _DropDownTextFieldState extends State<DropDownTextField>
                 _multiSelectionValue[index] = true;
               }
             }
+            List completeList = [];
+            for (int i = 0; i < _multiSelectionValue.length; i++) {
+              if (_multiSelectionValue[i]) {
+                completeList.add(_dropDownList[i].name);
+              }
+            }
             int count = _multiSelectionValue
                 .where((element) => element)
                 .toList()
@@ -429,7 +435,7 @@ class _DropDownTextFieldState extends State<DropDownTextField>
             _cnt.text = (count == 0
                 ? ""
                 : widget.displayCompleteItem
-                    ? (widget.initialValue ?? []).join(",")
+                    ? completeList.join(",")
                     : "$count item selected");
           } else {
             _multiSelectionValue = [];
